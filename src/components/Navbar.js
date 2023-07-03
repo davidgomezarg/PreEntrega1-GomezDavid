@@ -10,7 +10,7 @@ const NavBar =()=> {
         <Container>
           <Navbar.Brand href="#home">
           <img
-              alt=""
+              alt="Logo"
               src="../img/favicon.png"
               width="30"
               height=""
