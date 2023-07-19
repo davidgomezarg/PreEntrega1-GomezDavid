@@ -8,7 +8,7 @@ const Item = ({id,image,name,price,category}) => {
 
     return (
         
-            <Card style={{ width: '18rem', margin:"10px" }}>
+            <Card style={{ width: '18rem', margin:"10px", paddingRight: '0',paddingLeft:'0' }}>
                 <Card.Img variant="top" src={image} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
