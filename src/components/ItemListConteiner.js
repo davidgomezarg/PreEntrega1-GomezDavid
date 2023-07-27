@@ -3,6 +3,7 @@ import Row from 'react-bootstrap/Row';
 import {useState,useEffect} from 'react';
 import { useParams } from "react-router-dom";
 import arrayProductos from "../Json/arrayProductos.json"
+import {getFirestore,collection,getDocs} from "firebase/firestore"
 
 const ItemListConteiner = ()=>{
 
@@ -10,20 +11,12 @@ const ItemListConteiner = ()=>{
     const {id} = useParams();
 
     useEffect(()=>{
-        const promesa = new Promise ((resolve)=>{
-            setTimeout(()=>{
-                resolve(id ? arrayProductos.filter(p=>p.categoria === id) : arrayProductos)
+        const querydb= getFirestore();
+        const queryCollection= collection(querydb,"productos") 
+        getDocs(queryCollection)
+        .then(res=>setProducto(res.docs.map(p=>({id:p.id, ...p.data()}))))
 
-            },3000);
-        });
-
-        promesa.then((data)=>{
-            setProducto(data);
-        })
-
-      
-
-    },[id]);
+    },[]);
 
     
 

@@ -5,6 +5,7 @@ import ItemListConteiner from './components/ItemListConteiner.js';
 import ItemDetailConteiner from './components/ItemDetailConteiner.js';
 import {BrowserRouter,Route,Routes} from 'react-router-dom';
 import Error from './components/Error.js';
+import "../src/firebase/config"
 
 function App() {
   return (

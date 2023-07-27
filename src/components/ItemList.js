@@ -13,10 +13,10 @@ const ItemList = ({producto})=>{
           return(
             <Item
             id={p.id}
-            image={p.imagen}
-            name={p.nombre}
-            price={p.precio}
-            category={p.categoria}
+            image={p.image}
+            name={p.name}
+            price={p.price}
+            category={p.category}
             />
           );
         })}  
