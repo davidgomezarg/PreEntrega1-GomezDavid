@@ -1,9 +1,10 @@
 import ItemCount from "./ItemCount.js"
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
+const ItemDetail = ({id,image,name,price,category,description,stock})=>{
 
-const ItemDetail = ({image,name,price,category,description})=>{
+    
+
     return(
       <>
          <Card style={{ width: '25rem', margin:"10px",paddingRight: '0',paddingLeft:'0' }}>
@@ -14,8 +15,8 @@ const ItemDetail = ({image,name,price,category,description})=>{
                     {description}
                 </Card.Text>
                 <h5>Precio: {price}</h5>           
-                <ItemCount/>
-                <Button variant="primary">Agregar a Carrito</Button>
+                <ItemCount stock={stock} id={id} name={name} price={price} image={image} />
+                
             </Card.Body>
         </Card>
       </>

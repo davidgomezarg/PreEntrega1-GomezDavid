@@ -6,20 +6,27 @@ import ItemDetailConteiner from './components/ItemDetailConteiner.js';
 import {BrowserRouter,Route,Routes} from 'react-router-dom';
 import Error from './components/Error.js';
 import "../src/firebase/config"
+import CheckOut from './components/Checkout.js';
+import CartProvider from './context/CartContext';
+import Cart from './components/Cart';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-      <NavBar/>
-      <Routes>
-        <Route path='/' element={<ItemListConteiner/>}/>
-        <Route path='/category/:id' element={<ItemListConteiner/>}/>
-        <Route path='/item/:id' element={<ItemDetailConteiner/>}/>
-        <Route path='/*' element={<Error/>}/>
-      </Routes>
+      <CartProvider>
+        <BrowserRouter>
+          <NavBar/>
+          <Routes>
+            <Route path='/' element={<ItemListConteiner/>}/>
+            <Route path='/category/:categoryId' element={<ItemListConteiner/>}/>
+            <Route path='/item/:Id' element={<ItemDetailConteiner/>}/>
+            <Route path='/checkout' element={<CheckOut/>}/>
+            <Route path='/cart' element={<Cart/>}/>
+            <Route path='/*' element={<Error/>}/>
+          </Routes>
 
-      </BrowserRouter>
+        </BrowserRouter>
+      </CartProvider>
       
     </div>
     

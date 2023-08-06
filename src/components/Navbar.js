@@ -25,7 +25,7 @@ const NavBar =()=> {
             <Nav.Link as={Link} to="category/secos">SECOS</Nav.Link>
             <Nav.Link as={Link} to="category/conservas">CONSERVAS</Nav.Link>
             <Nav.Link as={Link} to="category/semillas">SEMILLA</Nav.Link>
-            <Nav.Link as={Link} to="#"><CartWidget/></Nav.Link>
+            <Nav.Link as={Link} to="/cart"><CartWidget/></Nav.Link>
           </Nav>
         </Container>
       </Navbar>

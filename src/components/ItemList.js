@@ -3,8 +3,8 @@ import Item from "./Item.js"
 
 
 const ItemList = ({producto})=>{
-  console.log("ItemList producto: ");
-  console.log(producto);
+  //console.log("ItemList producto: ");
+  //console.log(producto);
 
   
     return(
