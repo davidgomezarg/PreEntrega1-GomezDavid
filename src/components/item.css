@@ -1,0 +1,15 @@
+.cardClass{
+
+    width: 16rem;
+    margin: 10px;
+    padding-right: 0;
+    padding-left: 0;
+    background: rgb(250, 244, 235);
+
+}
+
+.card-img{
+    /* width: 286px; */
+    width: 254px;
+    height: 160px; 
+}

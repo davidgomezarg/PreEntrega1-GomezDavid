@@ -7,7 +7,7 @@ const ItemDetail = ({id,image,name,price,category,description,stock})=>{
 
     return(
       <>
-         <Card style={{ width: '25rem', margin:"10px",paddingRight: '0',paddingLeft:'0' }}>
+         <Card style={{ width: '20rem', margin:"10px",paddingRight: '0',paddingLeft:'0' }}>
             <Card.Img variant="top" src={image} />
             <Card.Body>
                 <Card.Title>{name}</Card.Title>

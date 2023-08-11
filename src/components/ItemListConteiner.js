@@ -1,8 +1,8 @@
 import ItemList from "./ItemList.js"
+import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import {useState,useEffect} from 'react';
 import { useParams } from "react-router-dom";
-//import arrayProductos from "../Json/arrayProductos.json"
 import {getFirestore,collection,getDocs,where,query} from "firebase/firestore"
 
 const ItemListConteiner = ()=>{
@@ -16,11 +16,8 @@ const ItemListConteiner = ()=>{
         const queryCollection= categoryId ? query(collection(querydb,"productos"),where("category","==",categoryId)) : collection(querydb,"productos");
         getDocs(queryCollection)
         .then((res)=>{
-            //console.log("res.docs: ")
-            //console.log(res.docs)
             setProducto(
                 res.docs.map((p)=>{
-                                    //console.log(p.data());
                                     return {id:p.id, ...p.data()}
                                 }))
                             })
@@ -29,9 +26,11 @@ const ItemListConteiner = ()=>{
     
 
     return(
-            <Row>
-                <ItemList producto={producto}></ItemList>
-            </Row>      
+            <Container >
+                <Row className="justify-content-md-center">
+                    <ItemList producto={producto}></ItemList>
+                </Row>
+            </Container>      
     )
 }
 

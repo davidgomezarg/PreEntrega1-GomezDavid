@@ -2,11 +2,8 @@
 import Item from "./Item.js"
 
 
-const ItemList = ({producto})=>{
-  //console.log("ItemList producto: ");
-  //console.log(producto);
 
-  
+const ItemList = ({producto})=>{
     return(
       <>
         {producto.map((p)=>{

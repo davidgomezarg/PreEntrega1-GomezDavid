@@ -3,26 +3,27 @@ import Card from 'react-bootstrap/Card';
 import {Link} from "react-router-dom";
 
 import Nav from 'react-bootstrap/Nav';
+import "./item.css"
 
-const Item = ({id,image,name,price,category}) => {
+function Item({ id, image, name, price, category }) {
 
     return (
-        
-            <Card style={{ width: '18rem', margin:"10px", paddingRight: '0',paddingLeft:'0' }}>
-                <Card.Img variant="top" src={image} />
-                <Card.Body>
-                    <Card.Title>{name}</Card.Title>
-                    <h5>Precio: {price}</h5>
-                    <h6>Categoria: {category}</h6>
-                    <Card.Text>
-                        {}
-                    </Card.Text>
-                    <Nav.Link as={Link} to={"/item/" + id} style={{textdecoration : 'none'}}>
-                        <Button variant="primary">Detalles</Button>
-                    </Nav.Link>
-                </Card.Body>
-            </Card>
-        
+
+        <Card className='cardClass'>
+            <Card.Img variant="" src={image}/>
+            <Card.Body>
+                <Card.Title>{name}</Card.Title>
+                <p>Precio: ${price}</p>
+                <p>Categoria: {category}</p>
+                <Card.Text>
+
+                </Card.Text>
+                <Nav.Link as={Link} to={"/item/" + id} style={{ textdecoration: 'none' }}>
+                    <Button variant="secondary">Detalles</Button>
+                </Nav.Link>
+            </Card.Body>
+        </Card>
+
     );
 }
 

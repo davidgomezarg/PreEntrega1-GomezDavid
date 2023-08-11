@@ -7,21 +7,16 @@ const CartProvider =({children})=>{
 
     const [cart,setCart]=useState([])
 
-    const addItem = (item,cant)=>{
-        if(cart.some(p=>p.id===item.id)){
+    const sumarCantidad =(id,cant)=>{
+        const index= cart.findIndex(p=>p.id===id)
+        const eliminado=cart[index]
+        cart.splice(index,1,{id:eliminado.id,name:eliminado.name,price:eliminado.price,image:eliminado.image,stock:(eliminado.stock-cant),cant:(eliminado.cant+cant)})
+        setCart([...cart])
+    }
 
-            const index= cart.findIndex(p=>p.id===item.id)
-            const eliminado=cart[index]
-            cart.splice(index,1,{id:eliminado.id,name:eliminado.name,image:eliminado.image,cant:(eliminado.cant+cant)})
-            console.log("Ya esta en el carrito. Se modifico cantidad")
-            console.log(cart)
+    const addItem = (item,cant,stock)=>{
 
-        }
-        else {
-            setCart([...cart,{...item,cant}]);
-            console.log("Producto nuevo en el carrito")
-            console.log(cart)
-        }
+        cart.some(p=>p.id===item.id) ? sumarCantidad(item.id,cant) : setCart([...cart,{...item,stock:(stock-cant),cant}]);
     }
 
     const getQuantity = ()=>{
@@ -30,7 +25,7 @@ const CartProvider =({children})=>{
     }
 
     return(
-        <CartContext.Provider value={{cart,addItem,getQuantity}}>
+        <CartContext.Provider value={{cart,addItem,getQuantity,setCart}}>
             {children}
         </CartContext.Provider>
     )
