@@ -1,10 +1,19 @@
 import React from 'react'
 import {useState,useContext} from 'react'
-import {getFirestore,collection,addDoc,getDocs,where,query} from "firebase/firestore"
-import { CartContext } from "../context/CartContext.js";
+import {getFirestore,collection,addDoc} from "firebase/firestore"
+import { CartContext } from "../../context/CartContext.js";
+
+import ClipLoader from "react-spinners/ClipLoader";
+
+const override= {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "black",
+};
 
 const CheckOut = () => {
     const [orderId,setOrderId]=useState()
+    const [loading,setLoading] = useState(false);
     const [mailError,setMailError]=useState(false)
     const [buyer,setBuyer]= useState({
         nombre:"",
@@ -31,9 +40,10 @@ const CheckOut = () => {
       if(buyer.email===buyer.email2)
       {
         setMailError(false)
+        setLoading(true)
         const dia=new Date()
         const total = cart.reduce ((acum,p)=>acum+(p.price * p.cant),0)
-        const data={buyer,cart,total,dia}
+        const data={buyer:{nombre: buyer.nombre,email: buyer.email, telefono: buyer.telefono},cart,total,dia,estado:"generada"}
         generarOrden(data);
         //vaciar el carrito aca
         setCart([])
@@ -61,7 +71,12 @@ const CheckOut = () => {
                     <h3>Tu ID de compra es: {orderId}</h3>
                   </>
                   :
-                    <form onSubmit={handleSubmit}>
+                  <>{loading ? 
+
+                    <div style={{height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center"}}>
+                    <ClipLoader color="#36d7b7" loading={loading} cssOverride={override} size={40} aria-label="Loading Spinner" data-testid="loader"/>
+                    </div>
+                    : <form onSubmit={handleSubmit}>
                     <div><input className="form-label" type="text" name="nombre" placeholder='nombre' value={nombre} onChange={handleInputChange} required></input></div>
                     <div><input className="form-label" type="email" name="email" placeholder='email' value={email} onChange={handleInputChange} required></input></div>
                     <div><input className="form-label" type="email" name="email2" placeholder='repeat email' value={email2} onChange={handleInputChange} required></input></div>
@@ -69,6 +84,8 @@ const CheckOut = () => {
                     <div><input className="form-label" type="number" name="telefono" placeholder='telefono' value={telefono} onChange={handleInputChange} required></input></div>
                     <div><input className="btn btn-secondary" type="submit" value="Confirmar"></input></div>
                   </form>
+                  }
+                  </>
       }
     </>
   )

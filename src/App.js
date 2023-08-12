@@ -1,14 +1,14 @@
 import './App.css';
 
-import NavBar from './components/Navbar.js';
-import ItemListConteiner from './components/ItemListConteiner.js';
-import ItemDetailConteiner from './components/ItemDetailConteiner.js';
+import NavBar from './components/navbar/Navbar.js';
+import ItemListConteiner from './components/itemListConteiner/ItemListConteiner.js';
+import ItemDetailConteiner from './components/itemDetailConteiner/ItemDetailConteiner.js';
 import {BrowserRouter,Route,Routes} from 'react-router-dom';
-import Error from './components/Error.js';
+import Error from './components/error/Error.js';
 import "../src/firebase/config"
-import CheckOut from './components/Checkout.js';
+import CheckOut from './components/checkout/Checkout.js';
 import CartProvider from './context/CartContext';
-import Cart from './components/Cart';
+import Cart from './components/cart/Cart.js';
 
 function App() {
   return (

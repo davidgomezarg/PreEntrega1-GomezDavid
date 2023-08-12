@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import { useContext,useEffect,useState } from "react";
-import { CartContext } from "../context/CartContext.js";
+import { CartContext } from "../../context/CartContext.js";
 import { useParams } from "react-router-dom";
 import Swal from 'sweetalert2';
 
@@ -23,12 +23,8 @@ const ItemCount =({id,name,stock,image,price})=>{
 
     useEffect(()=>{
         //El producto esta en el carrito? Respuesta: SI, entonces stock disponible depende de la cantidad que está en el carrito.
-        console.log("Se modificará stock",stock)
-
-        const index= cart.findIndex(p=>p.id===Id)
-        
+        const index= cart.findIndex(p=>p.id===Id)        
         setStockDisponible(index !== -1 ? cart[index].stock : stock);
-
     },[stock])
     
 

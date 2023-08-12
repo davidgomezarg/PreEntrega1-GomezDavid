@@ -26,15 +26,18 @@ npm start
 
 ## Librerias:
 
-⚡ React-icons
+⚡ React-icons: Utilizado en el icono del cartwidget.
 
-⚡ React-router-dom: routing de la web
+⚡ React-router-dom: routing de la web.
 
-⚡ Bootstrap
+⚡ Bootstrap: carts y tablas.
 
-⚡ React-bootstrap: navbar 
+⚡ React-bootstrap: navbar.
 
-⚡ Sweetalert2: Producto cargado con exito al carrito
+⚡ Sweetalert2: Para indicar que el producto fué cargado con exito al carrito.
+
+⚡ React Spinners: Implementado en la pantalla principal (ItemListConteiner) y en la espera de generacion de orden.
+    Sitio: https://www.npmjs.com/package/react-spinners
 
 ## Firestore Database
 
@@ -51,6 +54,8 @@ npm start
 |   stock       |   number      |
 
 ## Dirección del proyecto en vercel
+
+https://trabajo-final-gomez-david.vercel.app/
 
 
 # *GIF*:

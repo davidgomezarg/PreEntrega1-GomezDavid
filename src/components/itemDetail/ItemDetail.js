@@ -1,4 +1,4 @@
-import ItemCount from "./ItemCount.js"
+import ItemCount from "../itemCount/ItemCount.js"
 import Card from 'react-bootstrap/Card';
 
 const ItemDetail = ({id,image,name,price,category,description,stock})=>{

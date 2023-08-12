@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
-import { useParams } from "react-router-dom";
-import ItemDetail from "./ItemDetail.js"
+import { useParams,Navigate} from "react-router-dom";
+import ItemDetail from "../itemDetail/ItemDetail.js"
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import {getFirestore,doc,getDoc} from "firebase/firestore"
@@ -10,17 +10,23 @@ const ItemDetailConteiner = ()=>{
 
     const [producto,setProducto] = useState([]);
     const {Id} = useParams();
+    const [error,setError]=useState(false);
 
     useEffect(()=>{
      const querydb= getFirestore();
      const queryDoc= doc(querydb,"productos",Id) 
      getDoc(queryDoc)
-     .then(res=>setProducto(({id:res.id, ...res.data()})))
+     .then((res)=>{setProducto(({id:res.id, ...res.data()}))
+                    setError(false)
+                    })
+     .catch(setError(false))//Algo funciona mal. Se setea con false para que funcione. 
     },[Id]);
 
     
 
-    return(
+    return(<>
+            {error ? <Navigate to="/*"/> 
+            :
             <Container>
                 <Row className="justify-content-md-center">
                     <ItemDetail
@@ -33,7 +39,9 @@ const ItemDetailConteiner = ()=>{
                     stock={producto.stock}
                     />
                 </Row>
-            </Container>      
+            </Container>           
+            }
+            </>      
     )
 }
 

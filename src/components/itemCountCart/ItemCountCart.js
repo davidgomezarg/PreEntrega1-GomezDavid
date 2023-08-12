@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import { useContext,useState } from "react";
-import { CartContext } from "../context/CartContext.js";
+import { CartContext } from "../../context/CartContext.js";
 
 
 const ItemCountCart =({id,name,stock,image,price,valorInicial})=>{

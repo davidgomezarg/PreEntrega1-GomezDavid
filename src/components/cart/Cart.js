@@ -1,16 +1,17 @@
 import React, { useContext } from 'react'
-import { CartContext } from "../context/CartContext.js";
+import { CartContext } from "../../context/CartContext.js";
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import "./Cart.css"
-import ItemCountCart from './ItemCountCart.js';
+import ItemCountCart from '../itemCountCart/ItemCountCart.js';
 
 const Cart = () => {
   const { cart,setCart } = useContext(CartContext)
-  console.log(cart)
   
   const eliminarItem = (id)=>{ 
-  setCart(cart.filter(p=> p.id !== id))
+  const nuevo = cart.filter(p=> p.id !== id)
+  setCart(nuevo)
+  console.log(nuevo)
 }
 
   
